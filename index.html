@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mP music</title>
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <link rel="shortcut icon" href="/static/img/icon.png" type="image/x-icon" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="apple-touch-icon" href="/static/img/icon.png" />
+    <script
+      src="https://kit.fontawesome.com/ce4e4798b8.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body
+    class="w-full bg-slate-800 text-white dark:bg-slate-200 dark:text-slate-900"
+  >
+    <div class="min-h-screen flex flex-col">
+      <!-- Кнопка для смены темы -->
+      <div class="absolute top-4 left-4 z-10">
+        <button
+          id="theme-toggle"
+          class=" w-12 h-12 rounded-full bg-slate-800 text-white dark:bg-slate-200 dark:text-slate-900"
+        >
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+
+      <div class="overflow-hidden">
+        <img
+          class="blur-2xl object-cover object-center h-48 w-full"
+          id="album-cover"
+        />
+      </div>
+      <div class="relative w-full flex-grow">
+        <div class="flex justify-center">
+          <img
+            class="absolute -top-24 w-48 h-48 rounded-full border-4"
+            id="album-art"
+          />
+        </div>
+        <div class="flex flex-col text-center mt-32">
+          <h1 class="text-4xl" id="song-title">Название песни</h1>
+          <p
+            class="text-xl text-slate-400 dark:text-slate-600"
+            id="author-name"
+          >
+            Автор
+          </p>
+        </div>
+      </div>
+      <div class="w-full flex flex-col items-center p-8">
+        <!-- Ограничиваем ширину управления и таймлайна -->
+        <div class="w-full max-w-screen-lg mx-auto">
+          <div class="">
+            <div id="information"></div>
+          </div>
+          <div class="mb-4 flex w-full justify-between items-center">
+            <div class="bg-green-500"></div>
+            <div class="flex space-x-4">
+              <!-- Кнопка повторения -->
+              <button class="w-10 h-10 rounded-full" id="repeatBtn">
+                <i class="fa-solid fa-repeat"></i>
+              </button>
+              <!-- Кнопка предыдущей песни -->
+              <button class="w-10 h-10 rounded-full" id="prevBtn">
+                <i class="fa-solid fa-backward"></i>
+              </button>
+              <!-- Кнопка воспроизведения/паузы -->
+              <button
+                class="w-10 h-10 bg-white text-slate-800 rounded-full dark:bg-slate-900 dark:text-slate-200"
+                id="playPauseBtn"
+              >
+                <i class="fa-solid fa-play"></i>
+              </button>
+              <!-- Кнопка следующей песни -->
+              <button class="w-10 h-10 rounded-full" id="nextBtn">
+                <i class="fa-solid fa-forward"></i>
+              </button>
+              <!-- Кнопка перемешивания -->
+              <button class="w-10 h-10 rounded-full" id="shuffleBtn">
+                <i class="fa-solid fa-shuffle"></i>
+              </button>
+            </div>
+            <div class="flex items-center ml-4 relative">
+              <!-- Кнопка громкости -->
+              <button class="w-10 h-10 rounded-full" id="volumeBtn">
+                <i class="fa-solid fa-volume-high"></i>
+              </button>
+
+              <!-- Ползунок громкости -->
+              <input
+                type="range"
+                id="volumeRange"
+                value="100"
+                max="100"
+                step="1"
+                class="absolute hidden w-32 h-1 bg-gray-200 rounded-full transform -rotate-90 -translate-x-[48px] -translate-y-[96px] dark:bg-gray-700"
+              />
+            </div>
+          </div>
+          <!-- Таймлайн -->
+          <div class="w-full flex items-center">
+            <p class="flex-none" id="current-time">00:00</p>
+            <input type="range" id="progress" step="0.1" class="grow mx-4" />
+            <p class="flex-none" id="duration">00:00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <audio id="audio" src=""></audio>
+    <script src="static/js/player.js"></script>
+  </body>
+</html>
